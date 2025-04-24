@@ -1,0 +1,39 @@
+
+*{
+    font-size: 18px !important;
+}
+
+.container-in{
+    position: relative;
+    display: block;
+    width: 500px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:90px;
+}
+
+.container-in .container-header{
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    top:0%;
+    left: 0%;
+}
+
+.container-in #imagen{
+    position: relative;
+    top:60px !important;
+}
+
+.container-in input{
+    position: inherit;
+    height: 50px !important;
+    width: 380px;
+}
+
+.container-in .btn{
+    position: absolute;
+    right: 0%;
+    height: 50px;
+}
