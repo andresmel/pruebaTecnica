@@ -1,0 +1,12 @@
+
+<app-modal [predictionObg]="predictionObg"  [displayedColumnsModal]="displayedColumnsModal" [ordersbyCustomers]="ordersbyCustomers" *ngIf="showModal"  (modal)="handleModal($event)" ></app-modal>
+<app-modal-form *ngIf="showModalForm" (modalForm)="HandleModalForm($event)" [predictionObg]="predictionObg"></app-modal-form>
+<div class="container-table">
+  <div class="table-header">
+    <h4 class="title-costumer">Costumers</h4>
+    <app-search class="search" (inputdata)="handleGetName($event)"></app-search>
+  </div>
+  <app-table (costumerForm)="HandleFormCostumer($event)"  [filterData]="filterData" [displayedColumns]="displayedColumns" [costumersOrders]="costumersOtrders" (costumer)="HandleCostumer($event)"></app-table>
+</div>
+
+

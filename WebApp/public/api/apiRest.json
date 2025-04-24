@@ -1,0 +1,11 @@
+{
+  "costumers":{
+    "apiPrediction":"https://localhost:7196/api/predictionOrders",
+    "apiOrderByCostumer":"https://localhost:7196/api/getOrdersByCustomer",
+    "apiFilterByCostumer":"https://localhost:7196/api/predictionOrdersByname"
+  },
+  "employees":"https://localhost:7196/api/employees",
+  "products":"https://localhost:7196/api/product",
+  "shippers":"https://localhost:7196/api/shippers",
+  "orders":"https://localhost:7196/api/postOrder"
+}
