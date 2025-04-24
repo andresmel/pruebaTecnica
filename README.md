@@ -57,6 +57,7 @@ cd pruebaT-cnica
   dotnet build
   dotnet run
   se ejecuta con el puerto https://localhost:7196;http://localhost:5160
+  Debe cambiar la coneccion a la base de datos en el appsettings.json por sus credenciales de sql server local.
 
 # Ejecutar el Fronend
 cd ../webApp
@@ -67,17 +68,15 @@ se ejecuta con el puerto http://localhost:4200
 
 No se requiere autenticación para acceder a la aplicación.
 
-# ejecucion de la prueba
+# ejecucion del proyecto Sales Date Prediction
 # backend
-desarrolle la api en .net 6 utilizando scaffold parta el context y mapeo de base de datos,
-genere los controller por cada entidad. una carpeta de reposirotios para transacciones con base de datos
-y una carpeta servicios para la logica de la aplicacion. separe los servicios y repositorios por medio de interfaces. para separa responsabilidades y que sea mas facil el test. en las respuestas de los controladores genere un dto responseApi. cuenta con los atributos  status,data y message. para capturar desde el front end.
-el api cuenta con useCorse con origin del fronEnd angular. genere una carpeta Dtos para mapear las respuestas de los reposritorios de acuerdo a la necesidad de la prueba. la carpeta queries tiene el querie
-q calcula la predicion con el dto respectivo en la respuesta del sales date prediction. 
+se desarrollo la api en .net 6 utilizando scaffold para crear el  Dbcontext y mapeo de entidades de la base de datos, se creó la carpeta controllers, los controller por cada entidad. una carpeta de repositorios para transacciones con la base de datos, lacarpeta servicios para la logica de la aplicacion. separe los servicios y repositorios por medio de interfaces. para separa responsabilidades y que sea mas facil el test. servicios y repositorios tienen sus carpetas de interfaces. en las respuestas de los controladores se creó un dto responseApi. cuenta con los atributos  status, data y message para capturar esta respuiesta desde el front end.
+el api cuenta con useCorse con el origen del frontend angular. genere una carpeta Dtos para mapear las respuestas de los reposritorios de acuerdo a la necesidad del requerimiento. la carpeta queries tiene el querie que calcula la predicion con el dto respectivo en la respuesta del sales date prediction.
+los context se encuentran en la carpeta StoreSampleContext. la coneccion de la base de datos  se encuentra configurada en el programs.cs y la coneccion en el appsettings.json ConnectionStrings
 
 # frond end
 
-desarrolle la parte front con angular 18 utilizando standalone para importacion directa. genere las carpetas Core, Features y Shared para la prueba. Core contiene los servicios, Feature contiene Components,Layouts y Pages. Layout es el contenedor principal de la aplicacion y es en donde se renderiza las rutas hijas. las cuales son las Page customer y notfound. por default se presenta la ruta hija Costumer. en Components se encuentran Search,Table,Modaltable,Modalform y Modal. Search es el buscador y es el encargado de filtrar las ordenes al escribir algun nombre de la tabla. este filtra solo por nombre  y muestra lo que coincida con la data de entrada, Table es el componente que usa customer para presentar la prediccion, Tablemodal muestra el detalle las ordenes de cada cliente dentro del componente Modal. Modalform se muestra al hacer click en new order para crear una nueva orden. Los campos select del formulario shipper,product y employees se traen desde bases de datos. el formulario valida que todos los datos sean obligatorios. en el diseño se utilizo angular material y sweetalert2 en los mensajes del formulario. se manejo Input,Output para el envio 
+se desarrollo la parte front con angular 18 utilizando standalone para importacion directa. genere las carpetas Core, Features y Shared para la prueba. Core contiene los servicios, Feature contiene Components,Layouts y Pages. Layout es el contenedor principal de la aplicacion y es en donde se renderiza las rutas hijas. las cuales son las Page customer y notfound. por default se presenta la ruta hija Costumer. en Components se encuentran Search,Table,Modaltable,Modalform y Modal. Search es el buscador y es el encargado de filtrar las ordenes al escribir algun nombre de la tabla. este filtra solo por nombre  y muestra lo que coincida con la data de entrada, Table es el componente que usa customer para presentar la prediccion, Tablemodal muestra el detalle las ordenes de cada cliente dentro del componente Modal. Modalform se muestra al hacer click en new order para crear una nueva orden. Los campos select del formulario shipper,product y employees se traen desde bases de datos. el formulario valida que todos los datos sean obligatorios. en el diseño se utilizo angular material y sweetalert2 en los mensajes del formulario. se manejo Input,Output para el envio 
 de datos desde padre e hijo e hijo a padre. esto con el fin de q costumer sea el encargado de manejar las peticiones http. las solicitudes para los campos del formulario se hiceron desde el componente modalForm.
 las url de los endpoints  estan en un json en la carpeta api que esta dentro de la carpeta public.
 los servicios hacen uso de este archivo para apuntar a las rutas o endpoints del backend.
@@ -94,13 +93,6 @@ cd pruebaT-cnica
 cd D3
 
 
-# ejecucion Proyecto
-
-Se creo la carpeta D3 y dentro de ella un archivo index, una carpeta js con los archivos index.js "controller" y validar.js. El archivo index contiene validaciones de entrada de datos, una validacion
-para q la entrada de datos contenga comas, o al menos una y despues se convierte ese string con coma a un array numerico donde se valida q el tamaño no sea mayor a 5. A partir de este evento se invoca el metodo "mostrar" el cual se encarga de pintar la grafica con los valores y colores diferentes. el archivo validar tiene un metodo q sirve para q el usuario solo pueda ingresar numeros y comas, no permite  otro tipo de caracteres. el archivo index.css para dar un poco estilos. la grafica se pinta en el div con id imagen. se realizo con la documentacion de D3 para el uso de esta libreria.
-
-
-
 Este proyecto está compuesto por:
 **javascript vanilla** – ubicado en la carpeta D3
 
@@ -110,13 +102,16 @@ Este proyecto está compuesto por:
     |__css
     |   |__index.css
     !__js
-    |   |__indes.js
-    |   |__Validar.js
+    |   |__controller.js
+    |   |__validate-input.js
+    |   |__chargenerator.js
     |__index.html
 
 
 
+# ejecucion Proyecto D3
 
+Se creo la carpeta D3 y dentro de ella un archivo index, una carpeta js con los archivos controller.js y validate-input.js y chargenerator.js. El archivo controller contiene validaciones de entrada de datos, una validacion para que la entrada de datos contenga comas, o al menos una y despues se convierte ese string con coma a un array numerico donde se valida q el tamañodel array  no sea mayor a 5. A partir de este evento se invoca el metodo "mostrar" el cual se encarga de pintar la grafica con los valores y colores diferentes. el archivo que se encarga de la logica de D3 es el chargenerator.js. por otra parte El archivo validate-input.js tiene un metodo q sirve para q el usuario solo pueda ingresar numeros y comas, no permite  otro tipo de caracteres. el archivo index.css para dar un poco estilos. la grafica se pinta en el div con id imagen. se realizo con la documentacion de D3 y para el uso de esta libreria.
 
 
 
