@@ -93,6 +93,7 @@ git clone https://github.com/andresmel/pruebaT-cnica.git
 cd pruebaT-cnica
 cd D3
 
+
 # ejecucion Proyecto
 
 Se creo la carpeta D3 y dentro de ella un archivo index, una carpeta js con los archivos index.js "controller" y validar.js. El archivo index contiene validaciones de entrada de datos, una validacion
